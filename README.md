@@ -204,7 +204,7 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
     cd app
     npm install
     npm install -S @foxitsoftware/foxit-pdf-sdk-for-web-library 
-    npm install -D copy-webpack-plugin customize-cra react-app-rewired
+    npm install -D copy-webpack-plugin@6.1.1 customize-cra react-app-rewired
     npm run start
     ```
 
