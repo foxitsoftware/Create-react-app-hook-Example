@@ -43,7 +43,7 @@ Foxit PDF SDK for Web provides a boilerplate project for React app which was cre
 
 ### Prerequisites
 
-- [Nodejs](https://nodejs.org/en/) and [npm](https://www.npmjs.com)
+- [Nodejs](https://nodejs.org/en/) and [yarn](https://yarnpkg.com/getting-started/install)
 - [Foxit PDF SDK for Web](https://developers.foxitsoftware.com/pdf-sdk/Web)
 
 ### Getting started
@@ -53,8 +53,8 @@ Foxit PDF SDK for Web provides a boilerplate project for React app which was cre
 - Navigate to `root/integratons/create-react-app/`, and execute:
 
 ```bash
-    npm install 
-    npm run start
+    yarn 
+    yarn start
 ```
 
 Now everything is set up. Open your browser, navigate to <http://localhost:3000/> to launch this application.
@@ -63,7 +63,7 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
 
 ### Prerequisites
 
-- [Nodejs](https://nodejs.org/en/) and [npm](https://www.npmjs.com)
+- [Nodejs](https://nodejs.org/en/) and [yarn](https://yarnpkg.com/getting-started/install)
 - [Reac.js created by create-react-app](https://reactjs.org/docs/create-a-new-react-app.html)
 - [Foxit PDF SDK for Web](https://developers.foxitsoftware.com/pdf-sdk/Web)
 
@@ -222,10 +222,9 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
 
     ```bash
     cd app
-    npm install
-    npm install -S @foxitsoftware/foxit-pdf-sdk-for-web-library 
-    npm install -D copy-webpack-plugin@6.4.1 customize-cra@1.0.0 react-app-rewired@2.1.8
-    npm run start
+    yarn add @foxitsoftware/foxit-pdf-sdk-for-web-library 
+    yarn add copy-webpack-plugin@6.4.1 customize-cra@1.0.0 react-app-rewired@2.1.8 -D
+    yarn start
     ```
 
 10. Now everything is set up. Open your browser, navigate to <http://localhost:3000/> to launch your application.
