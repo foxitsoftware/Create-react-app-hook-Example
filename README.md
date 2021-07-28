@@ -113,13 +113,20 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
     )
    ```
 
-4. In `app` folder, add `.eslintignore`:
+4. In `src` folder, add `license-key.js`, copy the content below to that file and fill in the License's KEY and SN fields.
+
+    ```js
+    export const licenseKey = '';
+    export const licenseSN = '';
+    ```
+
+5. In `app` folder, add `.eslintignore`:
 
     ```text
     license-key.js
     ```  
 
-5. In `src` folder, add `preload.js`:
+6. In `src` folder, add `preload.js`:
 
    ```js
     import preloadJrWorker from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/preload-jr-worker';
@@ -136,13 +143,13 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
     });
    ```
 
-6. In `src/index.js` file, import `preload.js`:
+7. In `src/index.js` file, import `preload.js`:
 
     ```js
      import './preload.js'
     ```
 
-7. In `src` folder, add `components/PDFViewer/index.js`:
+8. In `src` folder, add `components/PDFViewer/index.js`:
 
    ```js
     import React, { createRef, forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
@@ -185,7 +192,7 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
     export default forwardRef(PDFViewer);
    ```
 
-8. Update `App.js`:
+9.  Update `App.js`:
 
     ```js
     import { useEffect, useRef } from 'react';
@@ -218,7 +225,7 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
 
     ```
 
-9. Update App.css
+10. Update App.css
 
     ```css
     #root,.App,.foxit-PDF{
@@ -226,7 +233,7 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
     }
     ```
 
-10. Install dependencies and run:
+11. Install dependencies and run:
 
     ```bash
     cd app
@@ -235,4 +242,4 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
     yarn start
     ```
 
-11. Now everything is set up. Open your browser, navigate to <http://localhost:3000/> to launch your application.
+12. Now everything is set up. Open your browser, navigate to <http://localhost:3000/> to launch your application.
