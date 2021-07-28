@@ -145,57 +145,77 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
 7. In `src` folder, add `components/PDFViewer/index.js`:
 
    ```js
-    import React from "react";
+    import React, { createRef, forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
     import * as UIExtension from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/UIExtension.full.js';
     import "@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/UIExtension.css";
-    
-    export default class PDFViewer extends React.Component {
-        constructor() {
-            super();
-            this.elementRef = React.createRef();
-        }
-    
-        render() {
-            return <div className="foxit-PDF" ref={this.elementRef} />;
-        }
-    
-        componentDidMount() {
-            const element = this.elementRef.current;
+
+    function PDFViewer(props, ref) {
+        const viewerContainerRef = useRef(null);
+
+        const pdfuiInstanceRef = createRef();
+        useEffect(() => {
+            const pdfui = pdfuiInstanceRef.current;
+            return () => {
+                pdfui.destroy();
+            };
+        }, [pdfuiInstanceRef]);
+
+        useImperativeHandle(ref,() => {
+            const renderTo = viewerContainerRef.current;
             const libPath = "/foxit-lib/";
-            this.pdfui = new UIExtension.PDFUI({
+            const pdfui = new UIExtension.PDFUI({
                 viewerOptions: {
                     libPath,
                     jr: {
                         readyWorker: window.readyWorker
-                    }
+                    },
+                    ...(props.viewerOptions || {})
                 },
-                renderTo: element,
+                renderTo: renderTo,
                 appearance: UIExtension.appearances.adaptive,
                 addons: UIExtension.PDFViewCtrl.DeviceInfo.isMobile ?
-                libPath+'uix-addons/allInOne.mobile.js':
-                libPath+'uix-addons/allInOne.js'
+                    libPath + 'uix-addons/allInOne.mobile.js' : libPath + 'uix-addons/allInOne.js'
             });
-        }
-        componentWillUnmount() {
-            this.pdfui.destroy();
-        }
+            pdfuiInstanceRef.current = pdfui;
+            return pdfui;
+        });
+        
+        return <div className = "foxit-PDF" ref = { viewerContainerRef } />;
     }
+    export default forwardRef(PDFViewer);
    ```
 
 8. Update `App.js`:
 
     ```js
+    import { useEffect, useRef } from 'react';
     import './App.css';
     import PDFViewer from './components/PDFViewer';
+
     function App() {
-      return (
-        <div className="App">
-          <PDFViewer></PDFViewer>
-        </div>
-      );
+        const pdfuiRef = useRef(null);
+        useEffect(() => {
+            const pdfui = pdfuiRef.current;
+            if(!pdfui) {
+                return;
+            }
+            // Here, you can do anything with the pdfui instance.
+            return () => {
+                // Here, you can perform any destruction actions.
+            };
+        }, [pdfuiRef]);
+        const externalViewerOptions = {
+            // more viewer options
+        };
+        return (
+            <div className="App">
+                <PDFViewer ref={pdfuiRef} viewerOptions={externalViewerOptions}></PDFViewer>
+            </div>
+        );
     }
-    
+
     export default App;
+
     ```
 
 9. Install your `node_modules` and run:
