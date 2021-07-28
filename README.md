@@ -218,7 +218,15 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
 
     ```
 
-9. Install your `node_modules` and run:
+9. Update App.css
+
+    ```css
+    #root,.App,.foxit-PDF{
+        height: 100%;
+    }
+    ```
+
+10. Install dependencies and run:
 
     ```bash
     cd app
@@ -227,4 +235,4 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
     yarn start
     ```
 
-10. Now everything is set up. Open your browser, navigate to <http://localhost:3000/> to launch your application.
+11. Now everything is set up. Open your browser, navigate to <http://localhost:3000/> to launch your application.
