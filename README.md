@@ -6,7 +6,7 @@ This guide shows two examples. One introduces how to quickly run the out-of-the-
 
 _Note:The root folder of `Foxit PDF SDK for Web` is referred as `root` in the following._
 
-Foxit PDF SDK for Web provides a boilerplate project for React app which was created by "create-react-app". This example can be found at `root/integrations/` inside Foxit PDF SDK for Web package.
+Foxit PDF SDK for Web provides a boilerplate project for React app which was created by "create-react-app".
 
 ### Overview the project structure
 
@@ -16,8 +16,6 @@ Foxit PDF SDK for Web provides a boilerplate project for React app which was cre
 ├─src/
 │  ├─components/
 │  │  └─PDFViewer/
-│  ├─foxit-lib/
-│  │    ├─...
 │  ├─App.css
 │  ├─App.js
 │  ├─index.css
@@ -48,9 +46,9 @@ Foxit PDF SDK for Web provides a boilerplate project for React app which was cre
 
 ### Getting started
 
-- Copy `root/examples/license-key.js` to the `root/integratons/create-react-app/src`.
+- Copy `license-key.js` to the `src` folder.
 
-- Navigate to `root/integratons/create-react-app/`, and execute:
+- Navigate to `create-react-app-hook` folder, and execute:
 
 ```bash
     yarn 
