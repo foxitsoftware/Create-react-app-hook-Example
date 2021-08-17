@@ -46,9 +46,15 @@ Foxit PDF SDK for Web provides a boilerplate project for React app which was cre
 
 ### Getting started
 
+- Clone this repository to any location
+  
+  ```bash
+  git clone git@github.com:foxitsoftware/create-react-app-hook.git
+  ```
+
 - Copy `license-key.js` to the `src` folder.
 
-- Navigate to `create-react-app-hook` folder, and execute:
+- Navigate to `./create-react-app-hook` folder, and execute:
 
 ```bash
     yarn 
