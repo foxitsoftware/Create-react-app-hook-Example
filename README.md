@@ -63,6 +63,11 @@ Foxit PDF SDK for Web provides a boilerplate project for React app which was cre
 
 Now everything is set up. Open your browser, navigate to <http://localhost:3000/> to launch this application.
 
+### Reference the fonts
+
+If some text in a PDF document requires a specified font to be rendered correctly, you need to specify a font loading path during initialization. In this example, you can refer to the `fontPath` configuration in `src/preload.js`. What we need to do is to copy the `external` folder in the SDK to the `public` folder so that the special font can be rendered normally.
+
+
 ## Integrate Web SDK to react app created by "create-react-app"
 
 ### Prerequisites
@@ -73,7 +78,7 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
 
 ### Getting started
 
-1. Create the React app with "create-react-app": 
+1. Create the React app with "create-react-app":
 
    ```bash
    npx create-react-app app
@@ -100,7 +105,7 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
     const libraryModulePath = path.resolve('node_modules/@foxitsoftware/foxit-pdf-sdk-for-web-library');
     const libPath = path.resolve(libraryModulePath, 'lib');
     
-    module.exports = override(    
+    module.exports = override(
         addWebpackPlugin(
             new CopyWebpackPlugin({
                 patterns: [{
@@ -141,19 +146,20 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
     window.readyWorker = preloadJrWorker({
         workerPath: libPath,
         enginePath: libPath+'/jr-engine/gsdk',
-        fontPath: 'http://webpdf.foxitsoftware.com/webfonts/',
+        fontPath: '/external/broli',
         licenseSN,
         licenseKey,
     });
    ```
 
-7. In `src/index.js` file, import `preload.js`:
+7. Copy the `external` folder inside SDK to `public` folder.
+8. In `src/index.js` file, import `preload.js`:
 
     ```js
      import './preload.js'
     ```
 
-8. In `src` folder, add `components/PDFViewer/index.js`:
+9. In `src` folder, add `components/PDFViewer/index.js`:
 
    ```js
     import React, { createRef, forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
@@ -196,7 +202,7 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
     export default forwardRef(PDFViewer);
    ```
 
-9.  Update `App.js`:
+10. Update `App.js`:
 
     ```js
     import { useEffect, useRef } from 'react';
@@ -229,7 +235,7 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
 
     ```
 
-10. Update App.css
+11. Update App.css
 
     ```css
     #root,.App,.foxit-PDF{
@@ -237,7 +243,7 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
     }
     ```
 
-11. Install dependencies and run:
+12. Install dependencies and run:
 
     ```bash
     cd app
@@ -246,4 +252,4 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
     yarn start
     ```
 
-12. Now everything is set up. Open your browser, navigate to <http://localhost:3000/> to launch your application.
+Now everything is set up. Open your browser, navigate to <http://localhost:3000/> to launch your application.
