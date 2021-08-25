@@ -42,7 +42,7 @@ Foxit PDF SDK for Web provides a boilerplate project for React app which was cre
 ### Prerequisites
 
 - [Nodejs](https://nodejs.org/en/) and [yarn](https://yarnpkg.com/getting-started/install)
-- [Foxit PDF SDK for Web](https://developers.foxitsoftware.com/pdf-sdk/Web)
+- [Foxit PDF SDK for Web](https://developers.foxit.com/products/web/)
 
 ### Getting started
 
