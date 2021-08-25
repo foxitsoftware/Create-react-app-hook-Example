@@ -74,7 +74,7 @@ If some text in a PDF document requires a specified font to be rendered correctl
 
 - [Nodejs](https://nodejs.org/en/) and [yarn](https://yarnpkg.com/getting-started/install)
 - [Reac.js created by create-react-app](https://reactjs.org/docs/create-a-new-react-app.html)
-- [Foxit PDF SDK for Web](https://developers.foxitsoftware.com/pdf-sdk/Web)
+- [Foxit PDF SDK for Web](https://developers.foxit.com/products/web/)
 
 ### Getting started
 
