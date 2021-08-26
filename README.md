@@ -2,7 +2,7 @@
 
 This guide shows two examples. One introduces how to quickly run the out-of-the-box sample for react.js created by "create-react-app" in Foxit PDF SDK for Web package, and the other presents a way to integrate Foxit PDF SDK for Web into React app created by "create-react-app".
 
-## Quickly run the out-of-the-box sample for create-react-app-hook
+## Quickly run the out-of-the-box sample for Create-react-app-hook-Example
 
 _Note:The root folder of `Foxit PDF SDK for Web` is referred as `root` in the following._
 
@@ -54,7 +54,7 @@ Foxit PDF SDK for Web provides a boilerplate project for React app which was cre
 
 - Copy `license-key.js` to the `src` folder.
 
-- Navigate to `./create-react-app-hook` folder, and execute:
+- Navigate to `./Create-react-app-hook-Example` folder, and execute:
 
 ```bash
     yarn 
