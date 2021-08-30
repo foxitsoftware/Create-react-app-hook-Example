@@ -131,13 +131,7 @@ If some text in a PDF document requires a specified font to be rendered correctl
     export const licenseSN = '';
     ```
 
-5. In `app` folder, add `.eslintignore`:
-
-    ```text
-    license-key.js
-    ```  
-
-6. In `src` folder, add `preload.js`:
+5. In `src` folder, add `preload.js`:
 
    ```js
     import preloadJrWorker from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/preload-jr-worker';
@@ -148,20 +142,20 @@ If some text in a PDF document requires a specified font to be rendered correctl
     window.readyWorker = preloadJrWorker({
         workerPath: libPath,
         enginePath: libPath+'/jr-engine/gsdk',
-        fontPath: '/external/broli',
+        fontPath: '/external/brotli',
         licenseSN,
         licenseKey,
     });
    ```
 
-7. Copy the `external` folder inside SDK to `public` folder.
-8. In `src/index.js` file, import `preload.js`:
+6. Copy the `external` folder inside SDK to `public` folder.
+7. In `src/index.js` file, import `preload.js`:
 
     ```js
      import './preload.js'
     ```
 
-9. In `src` folder, add `components/PDFViewer/index.js`:
+8. In `src` folder, add `components/PDFViewer/index.js`:
 
    ```js
     import React, { createRef, forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
@@ -204,7 +198,7 @@ If some text in a PDF document requires a specified font to be rendered correctl
     export default forwardRef(PDFViewer);
    ```
 
-10. Update `App.js`:
+9.  Update `App.js`:
 
     ```js
     import { useEffect, useRef } from 'react';
@@ -237,7 +231,7 @@ If some text in a PDF document requires a specified font to be rendered correctl
 
     ```
 
-11. Update App.css
+10. Update App.css
 
     ```css
     #root,.App,.foxit-PDF{
@@ -245,7 +239,7 @@ If some text in a PDF document requires a specified font to be rendered correctl
     }
     ```
 
-12. Install dependencies and run:
+11. Install dependencies and run:
 
     ```bash
     cd app
