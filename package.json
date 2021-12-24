@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@foxitsoftware/foxit-pdf-sdk-for-web-library": "^8.0.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
@@ -13,7 +12,7 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
-    "postinstall": "npm install -S @foxitsoftware/foxit-pdf-sdk-for-web-library",
+    "postinstall": "npm i -s @foxitsoftware/foxit-pdf-sdk-for-web-library",
     "start": "react-app-rewired --max_old_space_size=8192 start",
     "build": "react-app-rewired --max_old_space_size=8192 build",
     "test": "react-app-rewired test --env=jsdom",
