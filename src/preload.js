@@ -9,7 +9,7 @@ const libPath = "/foxit-lib/"
 window.readyWorker = preloadJrWorker({
     workerPath: libPath,
     enginePath: libPath + '/jr-engine/gsdk',
-    fontPath: '/external/brotli',
+    fontPath: 'https://webpdf.foxitsoftware.com/webfonts/',//自定义字体'/external/brotli',
     licenseSN,
     licenseKey,
 });
