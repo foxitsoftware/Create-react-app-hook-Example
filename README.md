@@ -161,6 +161,9 @@ If some text in a PDF document requires a specified font to be rendered correctl
     import React, { createRef, forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
     import * as UIExtension from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/UIExtension.full.js';
     import "@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/UIExtension.css";
+    import * as Addons from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/uix-addons/allInOne.js';
+    import * as mobileAddons from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/uix-addons/allInOne.mobile.js';
+
 
     function PDFViewer(props, ref) {
         const viewerContainerRef = useRef(null);
@@ -186,8 +189,7 @@ If some text in a PDF document requires a specified font to be rendered correctl
                 },
                 renderTo: renderTo,
                 appearance: UIExtension.appearances.adaptive,
-                addons: UIExtension.PDFViewCtrl.DeviceInfo.isMobile ?
-                    libPath + 'uix-addons/allInOne.mobile.js' : libPath + 'uix-addons/allInOne.js'
+                addons: UIExtension.PDFViewCtrl.DeviceInfo.isMobile? mobileAddons:Addons
             });
             pdfuiInstanceRef.current = pdfui;
             return pdfui;
