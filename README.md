@@ -158,7 +158,7 @@ If some text in a PDF document requires a specified font to be rendered correctl
 8. In `src` folder, add `components/PDFViewer/index.js`:
 
    ```js
-    import React, { createRef, forwardRef, useLayoutEffect, useImperativeHandle, useRef } from 'react';
+    import React, { createRef, forwardRef, useImperativeHandle, useRef } from 'react';
     import * as UIExtension from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/UIExtension.full.js';
     import "@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/UIExtension.css";
     import * as Addons from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/uix-addons/allInOne.js';
@@ -169,14 +169,12 @@ If some text in a PDF document requires a specified font to be rendered correctl
         const viewerContainerRef = useRef(null);
 
         const pdfuiInstanceRef = createRef();
-        useLayoutEffect(() => {
-            const pdfui = pdfuiInstanceRef.current;
-            return () => {
-                pdfui&&pdfui.destroy();
-            };
-        }, [pdfuiInstanceRef]);
 
         useImperativeHandle(ref,() => {
+            if(window.pdfui){
+                pdfuiInstanceRef.current = window.pdfui
+                return pdfuiInstanceRef.current
+            }
             const renderTo = viewerContainerRef.current;
             const libPath = "/foxit-lib/";
             const pdfui = new UIExtension.PDFUI({
@@ -191,7 +189,7 @@ If some text in a PDF document requires a specified font to be rendered correctl
                 appearance: UIExtension.appearances.adaptive,
                 addons: UIExtension.PDFViewCtrl.DeviceInfo.isMobile? mobileAddons:Addons
             });
-            pdfuiInstanceRef.current = pdfui;
+            window.pdfui = pdfuiInstanceRef.current = pdfui;
             return pdfui;
         });
         
