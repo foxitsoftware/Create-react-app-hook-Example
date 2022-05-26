@@ -158,7 +158,7 @@ If some text in a PDF document requires a specified font to be rendered correctl
 8. In `src` folder, add `components/PDFViewer/index.js`:
 
    ```js
-    import React, { createRef, forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+    import React, { createRef, forwardRef, useLayoutEffect, useImperativeHandle, useRef } from 'react';
     import * as UIExtension from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/UIExtension.full.js';
     import "@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/UIExtension.css";
     import * as Addons from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/uix-addons/allInOne.js';
@@ -169,10 +169,10 @@ If some text in a PDF document requires a specified font to be rendered correctl
         const viewerContainerRef = useRef(null);
 
         const pdfuiInstanceRef = createRef();
-        useEffect(() => {
+        useLayoutEffect(() => {
             const pdfui = pdfuiInstanceRef.current;
             return () => {
-                pdfui.destroy();
+                pdfui&&pdfui.destroy();
             };
         }, [pdfuiInstanceRef]);
 
