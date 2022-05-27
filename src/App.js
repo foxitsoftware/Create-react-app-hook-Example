@@ -17,11 +17,11 @@ function App() {
     const externalViewerOptions = {
         // more viewer options
     };
-  return (
-    <div className="App">
-        <PDFViewer ref={pdfuiRef} viewerOptions={externalViewerOptions}></PDFViewer>
-    </div>
-  );
+    return (
+        <div className="App">
+            <PDFViewer ref={pdfuiRef} viewerOptions={externalViewerOptions}></PDFViewer>
+        </div>
+    );
 }
 
 export default App;

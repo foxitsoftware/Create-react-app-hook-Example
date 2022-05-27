@@ -1,19 +1,20 @@
-import React, { createRef, forwardRef, useEffect, useImperativeHandle, useRef } from 'react';
+import React, { createRef, forwardRef, useImperativeHandle, useRef } from 'react';
 import * as UIExtension from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/UIExtension.full.js';
 import "@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/UIExtension.css";
+import * as Addons from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/uix-addons/allInOne.js';
+import * as mobileAddons from '@foxitsoftware/foxit-pdf-sdk-for-web-library/lib/uix-addons/allInOne.mobile.js';
+
 
 function PDFViewer(props, ref) {
     const viewerContainerRef = useRef(null);
 
     const pdfuiInstanceRef = createRef();
-    useEffect(() => {
-        const pdfui = pdfuiInstanceRef.current;
-        return () => {
-            pdfui.destroy();
-        };
-    }, [pdfuiInstanceRef]);
 
     useImperativeHandle(ref,() => {
+        if(window.pdfui){
+            pdfuiInstanceRef.current = window.pdfui
+            return pdfuiInstanceRef.current
+        }
         const renderTo = viewerContainerRef.current;
         const libPath = "/foxit-lib/";
         const pdfui = new UIExtension.PDFUI({
@@ -26,10 +27,9 @@ function PDFViewer(props, ref) {
             },
             renderTo: renderTo,
             appearance: UIExtension.appearances.adaptive,
-            addons: UIExtension.PDFViewCtrl.DeviceInfo.isMobile ?
-                libPath + 'uix-addons/allInOne.mobile.js' : libPath + 'uix-addons/allInOne.js'
+            addons: UIExtension.PDFViewCtrl.DeviceInfo.isMobile? mobileAddons:Addons
         });
-        pdfuiInstanceRef.current = pdfui;
+        window.pdfui = pdfuiInstanceRef.current = pdfui;
         return pdfui;
     });
     
