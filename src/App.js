@@ -10,8 +10,13 @@ function App() {
             return;
         }
         // Here, you can do anything with the pdfui instance.
+        function handleWindowResize() {
+            pdfui.redraw();
+        }
+        window.addEventListener('resize', handleWindowResize);
         return () => {
             // Here, you can perform any destruction actions.
+            window.removeEventListener('resize', handleWindowResize);
         };
     }, [pdfuiRef]);
     const externalViewerOptions = {
