@@ -213,8 +213,13 @@ If some text in a PDF document requires a specified font to be rendered correctl
                 return;
             }
             // Here, you can do anything with the pdfui instance.
+            function handleWindowResize() {
+                pdfui.redraw();
+            }
+            window.addEventListener('resize', handleWindowResize);
             return () => {
                 // Here, you can perform any destruction actions.
+                window.removeEventListener('resize', handleWindowResize);
             };
         }, [pdfuiRef]);
         const externalViewerOptions = {
