@@ -185,6 +185,11 @@ If some text in a PDF document requires a specified font to be rendered correctl
                     },
                     ...(props.viewerOptions || {})
                 },
+                messageSyncServiceWorker: {
+                  options:{
+                      scope: libPath
+                  }
+                }
                 renderTo: renderTo,
                 appearance: UIExtension.appearances.adaptive,
                 addons: UIExtension.PDFViewCtrl.DeviceInfo.isMobile? mobileAddons:Addons
