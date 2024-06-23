@@ -23,11 +23,6 @@ function PDFViewer(props, ref) {
                 jr: {
                     readyWorker: window.readyWorker
                 },
-                messageSyncServiceWorker: {
-                  options:{
-                      scope: libPath
-                  }
-                },
                 ...(props.viewerOptions || {})
             },
             renderTo: renderTo,
