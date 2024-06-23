@@ -69,6 +69,41 @@ Now everything is set up. Open your browser, navigate to <http://localhost:3000
 
 If some text in a PDF document requires a specified font to be rendered correctly, you need to specify a font loading path during initialization. In this example, you can refer to the `fontPath` configuration in `src/preload.js`. What we need to do is to copy the `external` folder in the SDK to the `public` folder so that the special font can be rendered normally.
 
+### Reference the `Service-Worker-Allowed` HTTP header
+
+Starting from FoxitPDFSDK for Web version `10.0.0`, since service worker is used, it is necessary to add this field in the HTTP response header of the Service Worker script. Its value is the maximum allowed scope path:
+
+```http
+Service-Worker-Allowed /;
+```
+
+#### Nginx 配置示例
+
+If you are using Nginx as your server, you can add the `Service-Worker-Allowed` response header by modifying the Nginx configuration file. Below is an example configuration：
+
+```nginx
+server {
+    location /sw.js {
+        add_header Service-Worker-Allowed /;
+    }
+}
+```
+
+#### Webpack Dev Server 配置示例
+
+If you use Webpack Dev Server for local development, you can add `Service-Worker-Allowed` response headers by configuring devServer. The following is a configuration example：
+
+```js
+// webpack.config.js
+module.exports = {
+    // 其他配置
+    devServer: {
+        headers: {
+            'Service-Worker-Allowed': '/'
+        }
+    }
+};
+```
 
 ## Integrate Web SDK to react app created by "create-react-app"
 
