@@ -219,11 +219,6 @@ module.exports = {
                         readyWorker: window.readyWorker
                     },
                     ...(props.viewerOptions || {})
-                },
-                messageSyncServiceWorker: {
-                  options:{
-                      scope: libPath
-                  }
                 }
                 renderTo: renderTo,
                 appearance: UIExtension.appearances.adaptive,
