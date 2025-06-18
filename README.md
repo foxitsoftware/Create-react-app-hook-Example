@@ -219,7 +219,7 @@ module.exports = {
                         readyWorker: window.readyWorker
                     },
                     ...(props.viewerOptions || {})
-                }
+                },
                 renderTo: renderTo,
                 appearance: UIExtension.appearances.adaptive,
                 addons: UIExtension.PDFViewCtrl.DeviceInfo.isMobile? mobileAddons:Addons
